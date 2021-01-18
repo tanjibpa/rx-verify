@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:11.4-alpine
+    environment:
+      - POSTGRES_USER=rx
+      - POSTGRES_PASSWORD=12345
+      - POSTGRES_DB=rx
+    ports:
+      - 5433:5432
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    volumes:
+      - ./src:/app/src
+    command: bash -c "cd src && python -u manage.py runserver 0.0.0.0:8000"
+#    network_mode: host
+    ports:
+      - 8040:8000
+    env_file:
+      - .env
