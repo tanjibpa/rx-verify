@@ -1,16 +1,15 @@
 from rest_framework.generics import ListCreateAPIView
-from rest_framework.permissions import IsAuthenticated, AllowAny
-from rest_framework.request import Request
+from rest_framework.permissions import IsAuthenticated
 
-from products.models import RawMaterial
-from products.serializers import RawMaterialsSerializer
+from products.models import Product, ProductBatch
+from products.serializers import ProductSerializer, ProductBatchSerializer
 from user.serializers import UserSerializerLite
 
 
-class RawMaterialListCreateAPIView(ListCreateAPIView):
+class ProductBatchListCreateAPIView(ListCreateAPIView):
     permission_classes = [IsAuthenticated]
-    queryset = RawMaterial.objects.all()
-    serializer_class = RawMaterialsSerializer
+    queryset = ProductBatch.objects.all()
+    serializer_class = ProductBatchSerializer
 
     def perform_create(self, serializer):
         serializer.save(

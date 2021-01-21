@@ -19,7 +19,11 @@ LOCAL_APPS = ["base", "user", "products"]
 
 INSTALLED_APPS = ON_TOP_APPS + DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
-MIDDLEWARE = [
+ON_TOP_MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+]
+
+DJANGO_MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -28,6 +32,10 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+LOCAL_MIDDLEWARE = ["base.middlewares.UserTimestampMiddleware"]
+
+MIDDLEWARE = ON_TOP_MIDDLEWARE + DJANGO_MIDDLEWARE  # + LOCAL_MIDDLEWARE
 
 TEMPLATES = [
     {
