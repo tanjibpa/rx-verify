@@ -14,12 +14,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.contrib import admin
 
 from rx_verify.views import HealthCheckAPI
 
+
+api_patterns = [
+    path("product/", include("products.urls", namespace="products_api")),
+    path("user/", include("user.urls", namespace="user_api")),
+]
+
 urlpatterns = [
     path("", HealthCheckAPI.as_view()),
+    path("api/", include([path("v1/", include(api_patterns))])),
     path("admin/", admin.site.urls),
 ]
