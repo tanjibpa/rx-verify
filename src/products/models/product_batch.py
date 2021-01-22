@@ -17,4 +17,4 @@ class ProductBatch(BaseModel):
         ordering = ["-updated_at"]
 
     def __str__(self):
-        return self.batch_number
+        return str(self.batch_number)
