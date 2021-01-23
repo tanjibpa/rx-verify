@@ -1,6 +1,6 @@
 import os
 
-AUTH_USER_MODEL = "user.User"
+# AUTH_USER_MODEL = "auth.User"
 ROOT_URLCONF = "rx_verify.urls"
 WSGI_APPLICATION = "rx_verify.wsgi.application"
 

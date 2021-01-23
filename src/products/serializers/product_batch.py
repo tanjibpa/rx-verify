@@ -15,5 +15,4 @@ class ProductBatchSerializer(serializers.ModelSerializer):
             {"id": raw_material.id, "name": raw_material.name}
             for raw_material in obj.product.raw_materials.all()
         ]
-        print(raw_materials)
         return {"name": obj.product.name, "raw_materials": raw_materials}

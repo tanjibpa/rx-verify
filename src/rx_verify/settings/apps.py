@@ -1,3 +1,5 @@
+from rx_verify.settings.base import BASE_DIR
+
 ON_TOP_APPS = ["corsheaders"]
 
 DJANGO_APPS = [
@@ -39,15 +41,15 @@ MIDDLEWARE = ON_TOP_MIDDLEWARE + DJANGO_MIDDLEWARE  # + LOCAL_MIDDLEWARE
 
 TEMPLATES = [
     {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
-        "APP_DIRS": True,
-        "OPTIONS": {
-            "context_processors": [
-                "django.template.context_processors.debug",
-                "django.template.context_processors.request",
-                "django.contrib.auth.context_processors.auth",
-                "django.contrib.messages.context_processors.messages",
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [f"{str(BASE_DIR)}/templates"],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
             ],
         },
     },

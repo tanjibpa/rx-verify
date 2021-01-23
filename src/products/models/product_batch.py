@@ -9,6 +9,7 @@ class ProductBatch(BaseModel):
     batch_number = models.UUIDField(default=uuid.uuid4, editable=False)
     mfg_date = models.DateField()
     expiration_date = models.DateField()
+    approved = models.BooleanField(default=False)
 
     class Meta:
         db_table = "product_batches"
